@@ -18,3 +18,4 @@ D:\projects\laboratorio\odata-efcore-webapi\ODataWebApp\obj\Debug\netcoreapp2.0\
 D:\projects\laboratorio\odata-efcore-webapi\ODataWebApp\obj\Debug\netcoreapp2.0\ODataWebApp.AssemblyInfo.cs
 D:\projects\laboratorio\odata-efcore-webapi\ODataWebApp\obj\Debug\netcoreapp2.0\ODataWebApp.dll
 D:\projects\laboratorio\odata-efcore-webapi\ODataWebApp\obj\Debug\netcoreapp2.0\ODataWebApp.pdb
+D:\projects\laboratorio\odata-efcore-webapi\ODataWebApp\bin\Debug\netcoreapp2.0\api-g36.xml

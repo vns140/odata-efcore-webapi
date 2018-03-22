@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ODataWebApp</name>
+    </assembly>
+    <members>
+        <member name="M:ODataWebApp.Controllers.PersonsController.Get">
+            <summary>
+            Obtem
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

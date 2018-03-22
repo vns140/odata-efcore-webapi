@@ -9,8 +9,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.PlatformAbstractions;
 using ODataWebApp.Data;
 using ODataWebApp.OData;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace ODataWebApp
 {
@@ -36,7 +38,33 @@ namespace ODataWebApp
 
             services.AddOData();
 
-            services.AddMvc();
+            services.AddMvc();                     
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new Info
+                    {
+                        Title = "API ERP G36",
+                        Version = "v1",
+                        Description = "Todos os recursos disponíveis.",
+                        Contact = new Contact
+                        {
+                            Name = "Vinícius Alexandre Saraiva Silva",
+                            Url = "valexandre@br.fujitsu.com"
+                        }
+                    });
+                 
+
+                string caminhoAplicacao =
+                    PlatformServices.Default.Application.ApplicationBasePath;
+                string nomeAplicacao =
+                    PlatformServices.Default.Application.ApplicationName;
+                
+                string caminhoXmlDoc = System.IO.Path.Combine(caminhoAplicacao, "api-g36.xml");
+
+                c.IncludeXmlComments(caminhoXmlDoc);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +94,14 @@ namespace ODataWebApp
             // configure OData routing
             app.UseMvc(routeBuilder =>
                 routeBuilder.MapODataServiceRoute("OData", "odata", builder.GetEdmModel()));
+
+                // Ativando middlewares para uso do Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                    "G36 ERP");
+            }); 
         }
     }
 }

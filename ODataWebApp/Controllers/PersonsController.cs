@@ -5,7 +5,11 @@ using ODataWebApp.Data;
 
 namespace ODataWebApp.Controllers
 {
-    public class PersonsController : ODataController
+    [Route("api/[controller]")]
+    /// <summary>
+    /// 
+    /// </summary>
+    public class PersonsController : Controller
     {
         private readonly ApplicationDbContext _db;
 
@@ -14,6 +18,10 @@ namespace ODataWebApp.Controllers
             _db = db;
         }
 
+        /// <summary>
+        /// Obtem
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [EnableQuery]
         public IQueryable<Person> Get()
